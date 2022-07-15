@@ -3,7 +3,8 @@ from aws_cdk import (
     RemovalPolicy,
     Stack,
     aws_lambda,
-    aws_lambda_destinations
+    aws_events,
+    aws_events_targets
 )
 
 
@@ -23,16 +24,20 @@ class ProcyonStack(Stack):
                                         removal_policy=RemovalPolicy.DESTROY
                                         )
 
-        # stats_lambda = aws_lambda.Function(self, 'data_lambda',
-        #                                 runtime=aws_lambda.Runtime.PYTHON_3_8,
-        #                                 code=aws_lambda.Code.from_asset('./lambdas/data'),
-        #                                 handler='lambda.handler',
-        #                                 on_success=aws_lambda_destinations.LambdaDestination(post_lambda)
-        #                                 )
-
         post_lambda = aws_lambda.Function(self, 'post_lambda', 
                                         runtime=aws_lambda.Runtime.PYTHON_3_8, 
                                         code=aws_lambda.Code.from_asset('./lambdas/post_lambda'),
                                         handler='lambda.handler',
-                                        layers=[record_layer, odds_layer])
+                                        layers=[record_layer, odds_layer]
+                                        )
 
+        post_rule = aws_events.Rule(self, 'post_rule', 
+                                        schedule=aws_events.Schedule.cron(
+                                            minute='0',
+                                            hour='12',
+                                            month='*',
+                                            week_day='MON, THU',
+                                            year='*'
+                                        ))
+
+        post_rule.add_target(aws_events_targets.LambdaFunction(post_lambda))

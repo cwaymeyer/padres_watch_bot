@@ -1,16 +1,36 @@
 from requests_oauthlib import OAuth1Session
 import json
+import boto3
+# import record_layer
+# import odds_layer
 
+SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
 
+def get_api_secrets():
+
+    client = boto3.client('secretsmanager')
+    response = client.get_secret_value(
+        SecretId=SECRET_ID
+    )
+
+    secret = json.loads(response['SecretString'])
+
+    return secret
+
+api_secrets = get_api_secrets()
+
 # api credentials
-CONSUMER_KEY = ''
-CONSUMER_SECRET = ''
-ACCESS_TOKEN = ''
-ACCESS_TOKEN_SECRET = ''
+CONSUMER_KEY = api_secrets['consumer-key']
+CONSUMER_SECRET = api_secrets['consumer-secret']
+ACCESS_TOKEN = api_secrets['access-token']
+ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 
-# 🚨🚨🚨🚨🚨 DON'T PUSH WITHOUT HIDING API SECRETS!!!! 🚨🚨🚨🚨🚨
+# record = record_layer.get_win_loss_data()
+# odds = odds_layer.get_postseason_odds()
 
+# print(record)
+# [print(odds)]
 
 def handler():
     '''

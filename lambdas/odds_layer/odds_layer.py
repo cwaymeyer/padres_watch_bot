@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-import record_layer
-import odds_layer
 
 URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
 
@@ -25,9 +23,12 @@ def get_team_odds_soup(team):
 
     return team_odds_soup
 
-def handler():
+def get_postseason_odds():
     '''
     🪐 Lambda handler 🪐
+    Hits baseballreference.com and returns an object with values:
+        - Postseason odds
+        - Change in postseason odds over the last 7 days
     '''
 
     padres_soup = get_team_odds_soup('Padres')
@@ -36,5 +37,3 @@ def handler():
     seven_day_postseason_change = padres_soup.find('td', attrs={'data-stat' : 'ppr_change_7day'}).text
 
     return {'odds': postseason_odds, 'change': seven_day_postseason_change}
-
-print(handler())
