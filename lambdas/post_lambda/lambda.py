@@ -1,8 +1,7 @@
 from requests_oauthlib import OAuth1Session
 import json
 import boto3
-# import record_layer
-# import odds_layer
+
 
 SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
@@ -13,7 +12,6 @@ def get_api_secrets():
     response = client.get_secret_value(
         SecretId=SECRET_ID
     )
-
     secret = json.loads(response['SecretString'])
 
     return secret
@@ -30,7 +28,8 @@ ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 # odds = odds_layer.get_postseason_odds()
 
 # print(record)
-# [print(odds)]
+# print(odds)
+
 
 def handler():
     '''
@@ -75,8 +74,6 @@ def handler():
 
     print('Response code: {}'.format(response.status_code))
 
-    # Saving the response as JSON
     json_response = response.json()
-    return json.dumps(json_response, indent=4, sort_keys=True)
 
-handler()
+    return json.dumps(json_response, indent=4, sort_keys=True)

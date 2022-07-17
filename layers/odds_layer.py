@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+
 URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
 
 
