@@ -65,7 +65,7 @@ class ProcyonStack(Stack):
                                         code=aws_lambda.Code.from_asset('lambdas/post_lambda'),
                                         handler='lambda.handler',
                                         role=post_lambda_role,
-                                        timeout=Duration.seconds(60),
+                                        timeout=Duration.seconds(30),
                                         layers=[lambda_layer]
                                         )
 

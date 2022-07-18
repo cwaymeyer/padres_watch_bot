@@ -26,8 +26,7 @@ def get_team_odds_soup(team):
 
 def get_postseason_odds():
     '''
-    🪐 Lambda handler 🪐
-    Hits baseballreference.com and returns an object with values:
+    Hits baseballreference.com and returns an object with two values:
         - Postseason odds
         - Change in postseason odds over the last 7 days
     '''
@@ -45,5 +44,6 @@ def get_postseason_odds():
         postseason_change = seven_day_postseason_change
 
     return {'odds': f'{postseason_odds}%', 'change': postseason_change}
+
 
 get_postseason_odds()

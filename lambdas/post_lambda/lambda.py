@@ -9,6 +9,7 @@ SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
 
 def get_api_secrets():
+    '''Get twitter API keys from AWS Secrets Manager'''
 
     client = boto3.client('secretsmanager')
     response = client.get_secret_value(
@@ -27,12 +28,12 @@ ACCESS_TOKEN = api_secrets['access-token']
 ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 
 
-def handler():
-# def handler(event, context):
+def handler(event, context):
     '''
     🪐 Lambda handler 🪐
-    This lambda takes the data acquired in data_lambda and uses it to format and post a tweet
-    Tweet posts are 1200 EST every Monday and Thursday
+    This lambda takes data acquired in `record_data` and `odds_data`, as the payload for a tweet
+    Tweet posts are 1230 EST every Monday and Thursday
+    Account: @padsplayoffpush
     '''
 
     record_obj = record_data.get_win_loss_data() # { 'current_record', 'week_record', 'games_behind' }
@@ -79,6 +80,3 @@ def handler():
     json_response = response.json()
 
     return json.dumps(json_response, indent=4, sort_keys=True)
-
-
-handler()
