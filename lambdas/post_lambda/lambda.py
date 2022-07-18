@@ -1,6 +1,8 @@
 from requests_oauthlib import OAuth1Session
 import json
 import boto3
+import record_data
+import odds_data
 
 
 SECRET_ID = 'twitter-api'
@@ -24,33 +26,33 @@ CONSUMER_SECRET = api_secrets['consumer-secret']
 ACCESS_TOKEN = api_secrets['access-token']
 ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 
-# record = record_layer.get_win_loss_data()
-# odds = odds_layer.get_postseason_odds()
-
-# print(record)
-# print(odds)
-
 
 def handler():
+# def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes the data acquired in data_lambda and uses it to format and post a tweet
     Tweet posts are 1200 EST every Monday and Thursday
     '''
 
-    record = '55-50'
-    gb = '2.5'
-    percentage = '56.7%'
-    last_7 = '4-3'
-    change = '+5.6%'
+    record_obj = record_data.get_win_loss_data() # { 'current_record', 'week_record', 'games_behind' }
+    odds_obj = odds_data.get_postseason_odds() # { 'odds', 'change' }
+
+    record = record_obj['current_record']
+    percentage = odds_obj['odds']
+    games_behind = record_obj['games_behind']
+    last_7 = record_obj['week_record']
+    change = odds_obj['change']
 
     tweet_text = f'''
-    record:         {record}
-    gb:             {gb}
-    playoff %:    {percentage}
+    𝗥𝗲𝗰𝗼𝗿𝗱:      {record}
+𝗣𝗹𝗮𝘆𝗼𝗳𝗳𝘀:     {percentage}
+𝗚𝗕:             {games_behind}
+    
+𝗟𝗮𝘀𝘁 𝟳𝗱:      {last_7}
+𝗖𝗵𝗮𝗻𝗴𝗲:    {change}
 
-    last 7d:          {last_7}    🔥
-    change:      {change} 📈
+#TimeToShine #Padres
     '''
 
     payload = {'text': tweet_text}
@@ -77,3 +79,6 @@ def handler():
     json_response = response.json()
 
     return json.dumps(json_response, indent=4, sort_keys=True)
+
+
+handler()

@@ -2,6 +2,26 @@ import statsapi
 import datetime
 
 
+expressions = {
+-8: '🤮',
+-7: '🤢',
+-6: '😫',
+-5: '🥴',
+-4: '😣',
+-3: '😬',
+-2: '😒', 
+-1: '😕',
+0: '😐',
+1: '😏',
+2: '😎',
+3: '😀',
+4: '😤',
+5: '💪',
+6: '🤑',
+7: '🔥',
+8: '💥'
+}
+
 # date operations
 now = datetime.date.today()
 today = now - datetime.timedelta(days=1)
@@ -9,6 +29,7 @@ today_date = today.strftime('%m/%d/%Y')
 
 week_ago = now - datetime.timedelta(days=8)
 week_ago_date = week_ago.strftime('%m/%d/%Y')
+
 
 def get_win_loss_data():
     '''
@@ -40,6 +61,14 @@ def get_win_loss_data():
     current_record = f'{padres_today["wins"]}-{padres_today["losses"]}'
     week_record = f'{week_wins}-{week_losses}'
 
+    # set week record expression
+    week_diff = week_wins - week_losses
+    if week_diff in expressions:
+        emoji = expressions[week_diff]
+        week_record_expr = f'{week_record}  {emoji}'
+    else:
+        week_record_expr = f'{week_record}  😳'
+
     # games-behind operations
     padres = padres_today['team']
     division = padres_today['division']
@@ -70,6 +99,8 @@ def get_win_loss_data():
 
     return {  
         'current_record': current_record, 
-        'week_record': week_record, 
+        'week_record': week_record_expr, 
         'games_behind': games_behind 
     }
+
+get_win_loss_data()
