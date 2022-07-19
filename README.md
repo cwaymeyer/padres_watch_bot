@@ -25,4 +25,11 @@
 - `cdk deploy` synthesize and deploy stack
 - `cdk docs` open CDK documentation
 
-_`requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`_
+<hr />
+
+`requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`
+
+To set up Lambda dependencies in a Lambda Layer:
+- Copy `requirements-layer.txt` to a new local virtualenv
+- Install the dependencies with `$ pip install -r requirements-layer.txt`
+- Copy the packages to `layer/python` with `$ rsync -a .venv/lib/<python-version>/site-packages <path/to/procyon>/layers/python`
