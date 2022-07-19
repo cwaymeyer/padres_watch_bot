@@ -1,65 +1,28 @@
+# Procyon
 
-# Welcome to your CDK Python project!
+## [@padsplayoffpush](https://twitter.com/padsplayoffpush)
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`procyon_stack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+**Bot posts weekly on Mondays and Thursdays at 1230pm EST.**
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+<br />
 
-This project is set up like a standard Python project.  The initialization process also creates
-a virtualenv within this project, stored under the .venv directory.  To create the virtualenv
-it assumes that there is a `python3` executable in your path with access to the `venv` package.
-If for any reason the automatic creation of the virtualenv fails, you can create the virtualenv
-manually once the init process completes.
+> ### Resources used:
+>
+> - [AWS CDK](https://aws.amazon.com/cdk/) - Software development kit
+>
+> - [Twitter API](https://developer.twitter.com/en/docs/twitter-api) - API for Twitter access
+>
+> - [Baseball Reference](https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml) - MLB data for playoff odds
+>
+> - [MLB-StatsAPI](https://github.com/toddrob99/MLB-StatsAPI) - MLB data for team records
 
-To manually create a virtualenv on MacOS and Linux:
+<br />
 
-```
-$ python3 -m venv .venv
-```
+### Useful commands
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+- `pytest` run tests
+- `cdk synth` emit synthesized CFT
+- `cdk deploy` synthesize and deploy stack
+- `cdk docs` open CDK documentation
 
-```
-$ source .venv/bin/activate
-```
-
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-You can now begin exploring the source code, contained in the hello directory.
-There is also a very trivial test included that can be run like this:
-
-```
-$ pytest
-```
-
-To add additional dependencies, for example other CDK libraries, just add to
-your requirements.txt file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+_`requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`_
