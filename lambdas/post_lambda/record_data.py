@@ -35,6 +35,7 @@ def get_win_loss_data():
     '''
     Hits the mlbstats-api and returns an object with three values:
         - Current record 
+        - Wins pace
         - Record over the past week
         - Games out of a playoff spot
     '''
@@ -43,7 +44,7 @@ def get_win_loss_data():
     def get_wins_and_losses(date):
         '''Get Padres record on a specified date this year'''
 
-        standings = statsapi.standings_data(leagueId="104", date=date)
+        standings = statsapi.standings_data(leagueId='104', date=date)
         nl_west = standings[203]['teams']
         padres = [ team for team in nl_west if team['name'] == 'San Diego Padres']
 
@@ -55,10 +56,14 @@ def get_win_loss_data():
     padres_today = get_wins_and_losses(today_date)
     padres_last_week = get_wins_and_losses(week_ago_date)
 
-    week_wins = padres_today['wins'] - padres_last_week['wins']
-    week_losses = padres_today['losses'] - padres_last_week['losses']
+    # get 
+    current_wins = padres_today['wins']
+    current_losses = padres_today['losses']
 
-    current_record = f'{padres_today["wins"]}-{padres_today["losses"]}'
+    week_wins = current_wins - padres_last_week['wins']
+    week_losses = current_losses - padres_last_week['losses']
+
+    current_record = f'{current_wins}-{current_losses}'
     week_record = f'{week_wins}-{week_losses}'
 
     # set week record expression
@@ -68,6 +73,11 @@ def get_win_loss_data():
         week_record_expr = f'{week_record}  {emoji}'
     else:
         week_record_expr = f'{week_record}  😳'
+
+    # pace operations
+    win_percentage = current_wins / (current_wins + current_losses)
+    pace = round(win_percentage * 162)
+    wins_pace = f'{pace} wins'
 
     # games-behind operations
     padres = padres_today['team']
@@ -98,7 +108,8 @@ def get_win_loss_data():
             games_behind = float(second_place['gb'])
 
     return {  
-        'current_record': current_record, 
+        'current_record': current_record,
+        'wins_pace': wins_pace,
         'week_record': week_record_expr, 
         'games_behind': games_behind 
     }

@@ -36,21 +36,24 @@ def handler(event, context):
     Account: @padsplayoffpush
     '''
 
-    record_obj = record_data.get_win_loss_data() # { 'current_record', 'week_record', 'games_behind' }
+    record_obj = record_data.get_win_loss_data() # { 'current_record', 'wins_pace', 'week_record', 'games_behind' }
     odds_obj = odds_data.get_postseason_odds() # { 'odds', 'change' }
 
     record = record_obj['current_record']
-    percentage = odds_obj['odds']
     games_behind = record_obj['games_behind']
+    pace = record_obj['wins_pace']
+    percentage = odds_obj['odds']
     last_7 = record_obj['week_record']
     change = odds_obj['change']
 
     tweet_text = f'''
     𝗥𝗲𝗰𝗼𝗿𝗱:      {record}
-𝗣𝗹𝗮𝘆𝗼𝗳𝗳𝘀:     {percentage}
 𝗚𝗕:             {games_behind}
+
+𝗣𝗮𝗰𝗲:          {pace}
+𝗣𝗹𝗮𝘆𝗼𝗳𝗳𝘀:     {percentage}
     
-𝗟𝗮𝘀𝘁 𝟳𝗱:      {last_7}
+𝗟𝗮𝘀𝘁 𝟳𝗱:       {last_7}
 𝗖𝗵𝗮𝗻𝗴𝗲:    {change}
 
 #TimeToShine #Padres
