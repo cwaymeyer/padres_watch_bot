@@ -43,7 +43,10 @@ def get_postseason_odds():
     else:
         postseason_change = seven_day_postseason_change
 
-    return {'odds': f'{postseason_odds}%', 'change': postseason_change}
+    return {
+        'odds': f'{postseason_odds}%', 
+        'change': postseason_change
+    }
 
 
 get_postseason_odds()

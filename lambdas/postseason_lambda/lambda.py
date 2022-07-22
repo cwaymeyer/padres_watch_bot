@@ -31,9 +31,9 @@ ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 def handler(event, context):
     '''
     🪐 Lambda handler 🪐
-    This lambda takes data acquired in `record_data` and `odds_data`, as the payload for a tweet
+    This lambda takes data acquired in `record_data.py` and `odds_data.py`, as the payload for a tweet
     Tweet posts are 1230 EST every Monday and Thursday
-    Account: @padsplayoffpush
+    Account: @padres_watch
     '''
 
     record_obj = record_data.get_win_loss_data() # { 'current_record', 'wins_pace', 'week_record', 'games_behind' }
@@ -47,16 +47,18 @@ def handler(event, context):
     change = odds_obj['change']
 
     tweet_text = f'''
-    𝗥𝗲𝗰𝗼𝗿𝗱:      {record}
-𝗚𝗕:             {games_behind}
+    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙥𝙤𝙨𝙩𝙨𝙚𝙖𝙨𝙤𝙣 𝙬𝙖𝙩𝙘𝙝 𝙪𝙥𝙙𝙖𝙩𝙚
 
-𝗣𝗮𝗰𝗲:          {pace}
+𝗥𝗲𝗰𝗼𝗿𝗱:       {record}
+𝗚𝗕:              {games_behind}
+
+𝗣𝗮𝗰𝗲:           {pace}
 𝗣𝗹𝗮𝘆𝗼𝗳𝗳𝘀:     {percentage}
     
 𝗟𝗮𝘀𝘁 𝟳𝗱:       {last_7}
-𝗖𝗵𝗮𝗻𝗴𝗲:    {change}
+𝗖𝗵𝗮𝗻𝗴𝗲:     {change}
 
-#TimeToShine #Padres
+#GoPadres #TimeToShine
     '''
 
     payload = {'text': tweet_text}
