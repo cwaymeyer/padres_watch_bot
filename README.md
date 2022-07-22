@@ -1,6 +1,6 @@
 # Procyon
 
-## [@padsplayoffpush](https://twitter.com/padsplayoffpush)
+<a href="https://twitter.com/padsplayoffpush" target="blank"><img src="https://img.shields.io/twitter/follow/padsplayoffpush?logo=twitter&style=for-the-badge" alt="padsplayoffpush" /></a> </p>
 
 **Bot posts weekly on Mondays and Thursdays at 1230pm EST.**
 
@@ -25,4 +25,11 @@
 - `cdk deploy` synthesize and deploy stack
 - `cdk docs` open CDK documentation
 
-_`requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`_
+<hr />
+
+`requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`
+
+To set up Lambda dependencies in a Lambda Layer:
+- Copy `requirements-layer.txt` to a new local virtualenv
+- Install the dependencies with `$ pip install -r requirements-layer.txt`
+- Copy the packages to `layer/python` with `$ rsync -a .venv/lib/<python-version>/site-packages <path/to/procyon>/layers/python`
