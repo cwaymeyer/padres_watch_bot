@@ -1,6 +1,6 @@
 # Procyon
 
-<a href="https://twitter.com/padsplayoffpush" target="blank"><img src="https://img.shields.io/twitter/follow/padsplayoffpush?logo=twitter&style=for-the-badge" alt="padsplayoffpush" /></a> </p>
+<a href="https://twitter.com/padres_watch" target="blank"><img src="https://img.shields.io/twitter/follow/padres_watch?logo=twitter&style=for-the-badge" alt="padres_watch" /></a> </p>
 
 **Bot posts weekly on Mondays and Thursdays at 1230pm EST.**
 
