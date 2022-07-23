@@ -2,7 +2,7 @@
 
 <a href="https://twitter.com/padres_watch" target="blank"><img src="https://img.shields.io/twitter/follow/padres_watch?logo=twitter&style=for-the-badge" alt="padres_watch" /></a> </p>
 
-**Bot posts weekly on Mondays and Thursdays at 1230pm EST.**
+**Bot posts weekly on Mondays, Thursdays, and Saturdays at 1200pm EST.**
 
 <br />
 
@@ -13,6 +13,8 @@
 > - [Twitter API](https://developer.twitter.com/en/docs/twitter-api) - API for Twitter access
 >
 > - [Baseball Reference](https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml) - MLB data for playoff odds
+>
+> - [MLB.com](https://www.mlb.com/) - MLB data for team statistics and roster transactions
 >
 > - [MLB-StatsAPI](https://github.com/toddrob99/MLB-StatsAPI) - MLB data for team records
 
@@ -30,6 +32,7 @@
 `requirements-layer.txt` holds dependencies for site packages to go in `/layers/python`
 
 To set up Lambda dependencies in a Lambda Layer:
+
 - Copy `requirements-layer.txt` to a new local virtualenv
 - Install the dependencies with `$ pip install -r requirements-layer.txt`
 - Copy the packages to `layer/python` with `$ rsync -a .venv/lib/<python-version>/site-packages <path/to/procyon>/layers/python`

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
+ODDS_URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
 
 def get_html(url):
     '''Get webpage html'''
@@ -13,7 +13,7 @@ def get_html(url):
 def get_team_odds_soup(team):
     '''Get playoff odds data as html soup for specified team'''
 
-    teams = get_html(URL)
+    teams = get_html(ODDS_URL)
     teams_soup = BeautifulSoup(teams, 'html.parser')
 
     playoff_odds = teams_soup.find_all('tbody')[1]

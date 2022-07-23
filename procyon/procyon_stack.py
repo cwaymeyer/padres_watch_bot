@@ -71,7 +71,7 @@ class ProcyonStack(Stack):
                                         )
 
         postseason_lambda_rule = aws_events.Rule(self, 'postseason_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(30 16 ? 4-9 2,5 *)')) # 1230 EST Mon, Thu
+                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 2,5 *)')) # 1200 EST Mon, Thu
 
         postseason_lambda_rule.add_target(aws_events_targets.LambdaFunction(postseason_lambda))
 
@@ -86,7 +86,7 @@ class ProcyonStack(Stack):
                                         )
 
         team_stats_lambda_rule = aws_events.Rule(self, 'team_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(00 22 ? 4-9 7 *)')) # 1800 EST Sat
+                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 7 *)')) # 1200 EST Sat
 
         team_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(team_stats_lambda))
 

@@ -32,7 +32,7 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `team_stats.py` as the payload for a tweet
-    Tweet posts are 1800 EST every Saturday
+    Tweet posts are 1200 EST every Saturday
     Account: @padres_watch
     '''
 
@@ -63,8 +63,8 @@ def handler(event, context):
     tweet_text = f'''
     #𝙋𝙖𝙙𝙧𝙚𝙨 𝙩𝙚𝙖𝙢 𝙨𝙩𝙖𝙩𝙨 𝙪𝙥𝙙𝙖𝙩𝙚
 
-𝗢𝗣𝗦:          {ops[0]}  {ops_rank}
-𝗥𝘂𝗻𝘀:          {runs[0]}  {runs_rank}
+𝗢𝗣𝗦:           {ops[0]}  {ops_rank}
+𝗥𝘂𝗻𝘀:          {runs[0]}/g  {runs_rank}
 
 𝗥𝗼𝘁𝗮𝘁𝗶𝗼𝗻 𝗘𝗥𝗔:      {starter_era[0]}  {starter_era_rank}
 𝗕𝘂𝗹𝗹𝗽𝗲𝗻 𝗘𝗥𝗔:       {reliever_era[0]}  {reliever_era_rank}
