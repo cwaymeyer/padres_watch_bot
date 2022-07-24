@@ -24,7 +24,7 @@ week_game_count = len(game_range)
 def get_date_range():
     '''Return date range for statistics gathered'''
 
-    date_range = f'{week_ago_date} - {today_date}'
+    date_range = f'{week_ago_date[0:5]} - {today_date[0:5]}'
     return date_range
 
 

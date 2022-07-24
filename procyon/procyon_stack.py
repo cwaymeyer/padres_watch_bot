@@ -116,7 +116,7 @@ class ProcyonStack(Stack):
                                         )
 
         weekly_pitching_stats_lambda_rule = aws_events.Rule(self, 'weekly_pitching_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(45 15 ? 4-9 1 *)')) # 1145 EST Sun
+                                        schedule=aws_events.Schedule.expression('cron(50 15 ? 4-9 1 *)')) # 1150 EST Sun
 
         weekly_pitching_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_pitching_stats_lambda))
 
