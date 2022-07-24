@@ -60,7 +60,7 @@ class ProcyonStack(Stack):
                                         removal_policy=RemovalPolicy.DESTROY
                                         )
 
-        # postseason lambda
+        # postseason odds lambda
         postseason_lambda = aws_lambda.Function(self, 'postseason_lambda', 
                                         runtime=aws_lambda.Runtime.PYTHON_3_8, 
                                         code=aws_lambda.Code.from_asset('lambdas/postseason_lambda'),
@@ -75,7 +75,7 @@ class ProcyonStack(Stack):
 
         postseason_lambda_rule.add_target(aws_events_targets.LambdaFunction(postseason_lambda))
 
-        # team stats lambda
+        # season team stats lambda
         team_stats_lambda = aws_lambda.Function(self, 'team_stats_lambda',
                                         runtime=aws_lambda.Runtime.PYTHON_3_8,
                                         code=aws_lambda.Code.from_asset('lambdas/team_stats_lambda'),
@@ -86,9 +86,38 @@ class ProcyonStack(Stack):
                                         )
 
         team_stats_lambda_rule = aws_events.Rule(self, 'team_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 7 *)')) # 1200 EST Sat
+                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 4 *)')) # 1200 EST Wed
 
         team_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(team_stats_lambda))
 
+        # weekly hitting stats lambda
+        weekly_hitting_stats_lambda = aws_lambda.Function(self, 'weekly_hitting_stats_lambda',
+                                        runtime=aws_lambda.Runtime.PYTHON_3_8,
+                                        code=aws_lambda.Code.from_asset('lambdas/weekly_team_leaders_lambda'),
+                                        handler='hitters_lambda.handler',
+                                        role=twitter_lambda_role,
+                                        timeout=Duration.seconds(30),
+                                        layers=[lambda_layer]
+                                        )
+
+        weekly_hitting_stats_lambda_rule = aws_events.Rule(self, 'weekly_hitting_stats_lambda_rule', 
+                                        schedule=aws_events.Schedule.expression('cron(30 15 ? 4-9 1 *)')) # 1130 EST Sun
+
+        weekly_hitting_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_hitting_stats_lambda))
+
+        # weekly pitching stats lambda
+        weekly_pitching_stats_lambda = aws_lambda.Function(self, 'weekly_pitching_stats_lambda',
+                                        runtime=aws_lambda.Runtime.PYTHON_3_8,
+                                        code=aws_lambda.Code.from_asset('lambdas/weekly_team_leaders_lambda'),
+                                        handler='pitchers_lambda.handler',
+                                        role=twitter_lambda_role,
+                                        timeout=Duration.seconds(30),
+                                        layers=[lambda_layer]
+                                        )
+
+        weekly_pitching_stats_lambda_rule = aws_events.Rule(self, 'weekly_pitching_stats_lambda_rule', 
+                                        schedule=aws_events.Schedule.expression('cron(45 15 ? 4-9 1 *)')) # 1145 EST Sun
+
+        weekly_pitching_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_pitching_stats_lambda))
 
 
