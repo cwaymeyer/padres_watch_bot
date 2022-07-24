@@ -4,10 +4,10 @@ import statsapi
 import datetime
 
 PADRES_ID = 135
-HITTERS_LAST_7_URL = 'https://www.mlb.com/stats/san-diego-padres?playerPool=ALL&timeframe=-6'
-PITCHERS_LAST_7_URL = 'https://www.mlb.com/stats/pitching/san-diego-padres?playerPool=ALL&sortState=asc&timeframe=-6'
-TEAM_HITTING_LAST_7_URL = 'https://www.mlb.com/stats/team?timeframe=-6'
-TEAM_PITCHING_LAST_7_URL = 'https://www.mlb.com/stats/team/pitching?sortState=asc&timeframe=-6'
+HITTERS_LAST_7_URL = 'https://www.mlb.com/stats/san-diego-padres?playerPool=ALL&timeframe=-7'
+PITCHERS_LAST_7_URL = 'https://www.mlb.com/stats/pitching/san-diego-padres?playerPool=ALL&sortState=asc&timeframe=-7'
+TEAM_HITTING_LAST_7_URL = 'https://www.mlb.com/stats/team?timeframe=-7'
+TEAM_PITCHING_LAST_7_URL = 'https://www.mlb.com/stats/team/pitching?sortState=asc&timeframe=-7'
 
 
 # get # of games played in the week
