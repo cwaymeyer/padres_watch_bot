@@ -2,7 +2,7 @@ import statsapi
 import datetime
 
 
-expressions = {
+EXPRESSIONS = {
 -8: '🤮',
 -7: '🤢',
 -6: '😫',
@@ -21,6 +21,7 @@ expressions = {
 7: '🔥',
 8: '💥'
 }
+
 
 # date operations
 now = datetime.date.today()
@@ -68,8 +69,8 @@ def get_win_loss_data():
 
     # set week record expression
     week_diff = week_wins - week_losses
-    if week_diff in expressions:
-        emoji = expressions[week_diff]
+    if week_diff in EXPRESSIONS:
+        emoji = EXPRESSIONS[week_diff]
         week_record_expr = f'{week_record}  {emoji}'
     else:
         week_record_expr = f'{week_record}  😳'
@@ -113,6 +114,3 @@ def get_win_loss_data():
         'week_record': week_record_expr, 
         'games_behind': games_behind 
     }
-
-
-get_win_loss_data()

@@ -4,11 +4,13 @@ import requests
 
 ODDS_URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
 
+
 def get_html(url):
     '''Get webpage html'''
 
     response = requests.get(url)
     return response.text
+
 
 def get_team_odds_soup(team):
     '''Get playoff odds data as html soup for specified team'''
@@ -47,6 +49,3 @@ def get_postseason_odds():
         'odds': f'{postseason_odds}%', 
         'change': postseason_change
     }
-
-
-get_postseason_odds()

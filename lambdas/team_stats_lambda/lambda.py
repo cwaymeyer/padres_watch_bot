@@ -8,6 +8,7 @@ import math
 SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
 
+
 def get_api_secrets():
     '''Get twitter API keys from AWS Secrets Manager'''
 

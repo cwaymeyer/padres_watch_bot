@@ -6,6 +6,7 @@ from botocore.exceptions import ClientError
 
 TRANSACTIONS_URL = 'https://www.mlb.com/padres/roster/transactions'
 
+
 dynamodb = boto3.client('dynamodb')
 
 response = requests.get(TRANSACTIONS_URL)   

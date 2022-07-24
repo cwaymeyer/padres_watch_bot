@@ -3,6 +3,7 @@ import requests
 import statsapi
 import datetime
 
+
 PADRES_ID = 135
 HITTERS_LAST_7_URL = 'https://www.mlb.com/stats/san-diego-padres?playerPool=ALL&timeframe=-7'
 PITCHERS_LAST_7_URL = 'https://www.mlb.com/stats/pitching/san-diego-padres?playerPool=ALL&sortState=asc&timeframe=-7'
@@ -90,7 +91,6 @@ def get_top_pitchers():
         innings_pitched = row.find('td', attrs={'data-col' : '11'}).text
         if float(innings_pitched) / week_game_count > 0.65:
             player_name = row.find('a')['aria-label']
-            # earned_runs = row.find('td', attrs={'data-col' : '14'}).text
             hits = row.find('td', attrs={'data-col' : '12'}).text
             walks = row.find('td', attrs={'data-col' : '17'}).text
             strikeouts = row.find('td', attrs={'data-col' : '18'}).text
@@ -99,7 +99,6 @@ def get_top_pitchers():
             player_obj = {
                 'name': player_name,
                 'innings': innings_pitched,
-                # 'earned_runs': earned_runs,
                 'hits': hits,
                 'walks': walks,
                 'strikeouts': strikeouts,
@@ -115,6 +114,7 @@ def get_top_pitchers():
 
 
 def get_week_team_stats(url):
+    '''Get Padres team stack from the past week'''
 
     hitting_rows = get_html(url)
 
@@ -127,6 +127,7 @@ def get_week_team_stats(url):
 
 
 def get_week_team_hitting_stats():
+    '''Get select Padres team hitting stats for the week (returns { 'avg', 'obp', 'slg' })'''
 
     team_hitting_stats = get_week_team_stats(TEAM_HITTING_LAST_7_URL)
 
@@ -138,6 +139,7 @@ def get_week_team_hitting_stats():
 
 
 def get_week_team_pitching_stats():
+    '''Get select Padres team pitching stats for the week (returns { 'era', 'whip' })'''
 
     team_pitching_stats = get_week_team_stats(TEAM_PITCHING_LAST_7_URL)
 
