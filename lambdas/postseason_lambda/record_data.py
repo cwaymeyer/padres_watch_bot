@@ -4,24 +4,23 @@ import datetime
 
 EXPRESSIONS = {
 -8: '🤮',
--7: '🤢',
--6: '😫',
--5: '🥴',
--4: '😣',
--3: '😬',
--2: '😒', 
--1: '😕',
+-7: '🤡',
+-6: '🤢',
+-5: '😫',
+-4: '🥴',
+-3: '😓',
+-2: '😬', 
+-1: '😒',
 0: '😐',
-1: '😏',
+1: '😀',
 2: '😎',
-3: '😀',
+3: '💪',
 4: '😤',
-5: '💪',
-6: '🤑',
+5: '🤑',
+6: '🔥',
 7: '🔥',
 8: '💥'
 }
-
 
 # date operations
 now = datetime.date.today()
@@ -57,7 +56,7 @@ def get_win_loss_data():
     padres_today = get_wins_and_losses(today_date)
     padres_last_week = get_wins_and_losses(week_ago_date)
 
-    # get 
+    # get win-loss records
     current_wins = padres_today['wins']
     current_losses = padres_today['losses']
 
@@ -70,7 +69,10 @@ def get_win_loss_data():
     # set week record expression
     week_diff = week_wins - week_losses
     if week_diff in EXPRESSIONS:
-        emoji = EXPRESSIONS[week_diff]
+        if week_losses == 0:
+            emoji = '🧹'
+        else:
+            emoji = EXPRESSIONS[week_diff]
         week_record_expr = f'{week_record}  {emoji}'
     else:
         week_record_expr = f'{week_record}  😳'
