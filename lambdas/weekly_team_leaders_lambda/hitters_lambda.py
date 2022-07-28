@@ -32,7 +32,6 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `leaders.py` as the payload for a tweet
-    Tweet posts are 1130 EST every Sunday
     Account: @padres_watch
     '''
 

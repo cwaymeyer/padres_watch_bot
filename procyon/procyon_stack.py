@@ -71,7 +71,7 @@ class ProcyonStack(Stack):
                                         )
 
         postseason_lambda_rule = aws_events.Rule(self, 'postseason_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 2,5 *)')) # 1200 EST Mon, Thu
+                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 4,7 *)')) # 1200 EST Wed, Sat
 
         postseason_lambda_rule.add_target(aws_events_targets.LambdaFunction(postseason_lambda))
 
@@ -86,7 +86,7 @@ class ProcyonStack(Stack):
                                         )
 
         team_stats_lambda_rule = aws_events.Rule(self, 'team_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 4 *)')) # 1200 EST Wed
+                                        schedule=aws_events.Schedule.expression('cron(00 16 ? 4-9 5 *)')) # 1200 EST Thu
 
         team_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(team_stats_lambda))
 
@@ -101,7 +101,7 @@ class ProcyonStack(Stack):
                                         )
 
         weekly_hitting_stats_lambda_rule = aws_events.Rule(self, 'weekly_hitting_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(30 15 ? 4-9 1 *)')) # 1130 EST Sun
+                                        schedule=aws_events.Schedule.expression('cron(30 15 ? 4-9 2 *)')) # 1140 EST Mon
 
         weekly_hitting_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_hitting_stats_lambda))
 
@@ -116,7 +116,7 @@ class ProcyonStack(Stack):
                                         )
 
         weekly_pitching_stats_lambda_rule = aws_events.Rule(self, 'weekly_pitching_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(50 15 ? 4-9 1 *)')) # 1150 EST Sun
+                                        schedule=aws_events.Schedule.expression('cron(50 15 ? 4-9 2 *)')) # 1145 EST Mon
 
         weekly_pitching_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_pitching_stats_lambda))
 
