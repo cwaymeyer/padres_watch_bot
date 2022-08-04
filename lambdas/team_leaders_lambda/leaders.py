@@ -44,7 +44,7 @@ def get_date_range():
 def get_last_month():
     '''Return string name of last month used for stats queries'''
 
-    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    months = ['𝙅𝙖𝙣𝙪𝙖𝙧𝙮', '𝙁𝙚𝙗𝙧𝙪𝙖𝙧𝙮', '𝙈𝙖𝙧𝙘𝙝', '𝘼𝙥𝙧𝙞𝙡', '𝙈𝙖𝙮', '𝙅𝙪𝙣𝙚', '𝙅𝙪𝙡𝙮', '𝘼𝙪𝙜𝙪𝙨𝙩', '𝙎𝙚𝙥𝙩𝙚𝙢𝙗𝙚𝙧', '𝙊𝙘𝙩𝙤𝙗𝙚𝙧', '𝙉𝙤𝙫𝙚𝙢𝙗𝙚𝙧', '𝘿𝙚𝙘𝙚𝙢𝙗𝙚𝙧']
     return months[last_month - 1]
 
 

@@ -44,7 +44,7 @@ def handler(event, context):
 
 
     tweet_text = f'''
-   #𝙋𝙖𝙙𝙧𝙚𝙨 𝙢𝙤𝙣𝙩𝙝𝙡𝙮 𝙥𝙞𝙩𝙘𝙝𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {last_month}
+   #𝙋𝙖𝙙𝙧𝙚𝙨 𝙢𝙤𝙣𝙩𝙝𝙡𝙮 𝙥𝙞𝙩𝙘𝙝𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨 | {last_month}
 
 {p1['name']}: {p1['innings']} IP, {p1['hits']} H, {p1['strikeouts']} K, {p1['era']} ERA
 {p2['name']}: {p2['innings']} IP, {p2['hits']} H, {p2['strikeouts']} K, {p2['era']} ERA
