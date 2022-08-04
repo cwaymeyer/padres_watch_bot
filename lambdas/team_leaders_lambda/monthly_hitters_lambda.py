@@ -35,16 +35,16 @@ def handler(event, context):
     Account: @padres_watch
     '''
 
-    date_range = leaders.get_date_range()
-    team_hitting = leaders.get_week_team_hitting_stats()
-    hitters = leaders.get_top_hitters() # 
+    last_month = leaders.get_last_month()
+    team_hitting = leaders.get_month_team_hitting_stats()
+    hitters = leaders.month_hitting_leaders
     p1 = hitters[0]
     p2 = hitters[1]
     p3 = hitters[2]
 
 
     tweet_text = f'''
-    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙬𝙚𝙚𝙠𝙡𝙮 𝙝𝙞𝙩𝙩𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {date_range}
+    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙢𝙤𝙣𝙩𝙝𝙡𝙮 𝙝𝙞𝙩𝙩𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {last_month}
 
 {p1['name']}: {p1['hits_abs']}, {p1['homeruns']} HR, {p1['rbis']} RBI, {p1['ops']} OPS
 {p2['name']}: {p2['hits_abs']}, {p2['homeruns']} HR, {p2['rbis']} RBI, {p2['ops']} OPS

@@ -1,8 +1,7 @@
 from requests_oauthlib import OAuth1Session
 import json
 import boto3
-import record_data
-import odds_data
+import leaders
 
 
 SECRET_ID = 'twitter-api'
@@ -32,31 +31,26 @@ ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 def handler(event, context):
     '''
     🪐 Lambda handler 🪐
-    This lambda takes data acquired in `record_data.py` and `odds_data.py`, as the payload for a tweet
+    This lambda takes data acquired in `leaders.py` as the payload for a tweet
     Account: @padres_watch
     '''
 
-    record_obj = record_data.get_win_loss_data() # { 'current_record', 'wins_pace', 'week_record', 'games_behind' }
-    odds_obj = odds_data.get_postseason_odds() # { 'odds', 'change' }
+    date_range = leaders.get_date_range()
+    team_hitting = leaders.get_week_team_hitting_stats()
+    hitters = leaders.week_hitting_leaders
+    p1 = hitters[0]
+    p2 = hitters[1]
+    p3 = hitters[2]
 
-    record = record_obj['current_record']
-    games_behind = record_obj['games_behind']
-    pace = record_obj['wins_pace']
-    percentage = odds_obj['odds']
-    last_7 = record_obj['week_record']
-    change = odds_obj['change']
 
     tweet_text = f'''
-    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙥𝙤𝙨𝙩𝙨𝙚𝙖𝙨𝙤𝙣 𝙬𝙖𝙩𝙘𝙝 𝙪𝙥𝙙𝙖𝙩𝙚
+    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙬𝙚𝙚𝙠𝙡𝙮 𝙝𝙞𝙩𝙩𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {date_range}
 
-𝗥𝗲𝗰𝗼𝗿𝗱:       {record}
-𝗚𝗕:               {games_behind}
+{p1['name']}: {p1['hits_abs']}, {p1['homeruns']} HR, {p1['rbis']} RBI, {p1['ops']} OPS
+{p2['name']}: {p2['hits_abs']}, {p2['homeruns']} HR, {p2['rbis']} RBI, {p2['ops']} OPS
+{p3['name']}: {p3['hits_abs']}, {p3['homeruns']} HR, {p3['rbis']} RBI, {p3['ops']} OPS
 
-𝗣𝗮𝗰𝗲:            {pace}
-𝗣𝗹𝗮𝘆𝗼𝗳𝗳𝘀:      {percentage}
-    
-𝗟𝗮𝘀𝘁 𝟳𝗱:        {last_7}
-𝗖𝗵𝗮𝗻𝗴𝗲:      {change}
+Team hitting: {team_hitting['avg']} / {team_hitting['obp']} / {team_hitting['slg']}
 
 #GoPadres #TimeToShine
     '''

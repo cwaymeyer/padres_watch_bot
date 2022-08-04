@@ -119,7 +119,7 @@ def get_win_loss_data():
     if is_float(gb): # if team not in 1st place
         if '+' in padres['wc_gb']:
             first_out_of_wc_gb = get_fourth_place_games_behind() if is_float(get_fourth_place_games_behind()) else 0
-            games_behind = padres['wc_gb'] + float(first_out_of_wc_gb)
+            games_behind = f'+{float(padres["wc_gb"]) + float(first_out_of_wc_gb)}'
         elif wc_gb < gb:
             games_behind = wc_gb
         else:
