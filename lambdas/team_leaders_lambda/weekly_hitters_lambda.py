@@ -46,9 +46,9 @@ def handler(event, context):
     tweet_text = f'''
     #𝙋𝙖𝙙𝙧𝙚𝙨 𝙬𝙚𝙚𝙠𝙡𝙮 𝙝𝙞𝙩𝙩𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {date_range}
 
-{p1['name']}:  {p1['hits_abs']}, {p1['homeruns']} HR, {p1['rbis']} RBI, {p1['ops']} OPS
-{p2['name']}:  {p2['hits_abs']}, {p2['homeruns']} HR, {p2['rbis']} RBI, {p2['ops']} OPS
-{p3['name']}:  {p3['hits_abs']}, {p3['homeruns']} HR, {p3['rbis']} RBI, {p3['ops']} OPS
+{p1['name']}: {p1['hits_abs']}, {p1['homeruns']} HR, {p1['rbis']} RBI, {p1['ops']} OPS
+{p2['name']}: {p2['hits_abs']}, {p2['homeruns']} HR, {p2['rbis']} RBI, {p2['ops']} OPS
+{p3['name']}: {p3['hits_abs']}, {p3['homeruns']} HR, {p3['rbis']} RBI, {p3['ops']} OPS
 
 𝗧𝗲𝗮𝗺 𝗵𝗶𝘁𝘁𝗶𝗻𝗴: {team_hitting['avg']} / {team_hitting['obp']} / {team_hitting['slg']}
 

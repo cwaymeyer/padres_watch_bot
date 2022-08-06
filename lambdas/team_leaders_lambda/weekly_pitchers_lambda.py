@@ -46,9 +46,9 @@ def handler(event, context):
     tweet_text = f'''
    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙬𝙚𝙚𝙠𝙡𝙮 𝙥𝙞𝙩𝙘𝙝𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨  {date_range}
 
-{p1['name']}:  {p1['innings']} IP, {p1['hits']} H, {p1['strikeouts']} K, {p1['era']} ERA
-{p2['name']}:  {p2['innings']} IP, {p2['hits']} H, {p2['strikeouts']} K, {p2['era']} ERA
-{p3['name']}:  {p3['innings']} IP, {p3['hits']} H, {p3['strikeouts']} K, {p3['era']} ERA
+{p1['name']}: {p1['innings']} IP, {p1['hits']} H, {p1['strikeouts']} K, {p1['era']} ERA
+{p2['name']}: {p2['innings']} IP, {p2['hits']} H, {p2['strikeouts']} K, {p2['era']} ERA
+{p3['name']}: {p3['innings']} IP, {p3['hits']} H, {p3['strikeouts']} K, {p3['era']} ERA
 
 𝗧𝗲𝗮𝗺 𝗽𝗶𝘁𝗰𝗵𝗶𝗻𝗴: {team_pitching['era']} ERA / {team_pitching['whip']} WHIP
 

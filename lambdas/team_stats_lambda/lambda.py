@@ -55,10 +55,10 @@ def handler(event, context):
         else:
             return f'({num}th) {rank_emoji}'
 
-    ops_rank = get_ranking_with_suffix(int(ops[1]))
-    runs_rank = get_ranking_with_suffix(int(runs[1]))
-    starter_era_rank = get_ranking_with_suffix(int(starter_era[1]))
-    reliever_era_rank = get_ranking_with_suffix(int(reliever_era[1]))
+    ops_rank = get_ranking_with_suffix(int(ops[1]) + 1)
+    runs_rank = get_ranking_with_suffix(int(runs[1]) + 1)
+    starter_era_rank = get_ranking_with_suffix(int(starter_era[1]) + 1)
+    reliever_era_rank = get_ranking_with_suffix(int(reliever_era[1]) + 1)
 
     tweet_text = f'''
     #𝙋𝙖𝙙𝙧𝙚𝙨 𝙩𝙚𝙖𝙢 𝙨𝙩𝙖𝙩𝙨 𝙪𝙥𝙙𝙖𝙩𝙚
