@@ -2,7 +2,17 @@
 
 <a href="https://twitter.com/padres_watch" target="blank"><img src="https://img.shields.io/twitter/follow/padres_watch?logo=twitter&style=for-the-badge" alt="padres_watch" /></a> </p>
 
-**Bot posts weekly on Mondays, Thursdays, and Saturdays at 1200pm EST.**
+## **Bot post schedule**
+
+| Day                   |                               |
+| --------------------- | ----------------------------- |
+| Mon 1100 EST          | Last week's hitting leaders   |
+| Mon 1120 EST          | Last week's pitching leaders  |
+| Wed 1100 EST          | Postseason update             |
+| Thu 1100 EST          | Season team stats update      |
+| Sat 1230 EST          | Postseason update             |
+| 1st of month 1500 EST | Last month's hitting leaders  |
+| 1st of month 1530 EST | Last month's pitching leaders |
 
 <br />
 
@@ -12,7 +22,7 @@
 >
 > - [Twitter API](https://developer.twitter.com/en/docs/twitter-api) - API for Twitter access
 >
-> - [Baseball Reference](https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml) - MLB data for playoff odds
+> - [Baseball-Reference.com](https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml) - MLB data for playoff odds
 >
 > - [MLB.com](https://www.mlb.com/) - MLB data for team statistics and roster transactions
 >

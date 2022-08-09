@@ -1,3 +1,4 @@
+from webbrowser import get
 import statsapi
 import datetime
 
@@ -53,6 +54,7 @@ def get_win_loss_data():
 
         return { 'wins': wins, 'losses': losses, 'team': padres[0], 'division': nl_west }
 
+
     padres_today = get_wins_and_losses(today_date)
     padres_last_week = get_wins_and_losses(week_ago_date)
 
@@ -86,12 +88,19 @@ def get_win_loss_data():
     padres = padres_today['team']
     division = padres_today['division']
 
-    gb = float(padres['gb'])
-    wc_gb = float(padres['wc_gb'])
+    if padres['gb'] != '-':
+        gb = float(padres['gb'])
+    else:
+        gb = '0'
+    if padres['wc_gb'] != '-':
+        wc_gb = float(padres['wc_gb'])  
+    else:
+        gb = '0'
 
 
-    def get_fourth_place_games_behind():
-        '''Get games behind for the first team outside of the wildcard spot'''
+    def get_contender_games_behind(team_rank, team_to_skip):
+        '''Get games behind for team in specified standings position'''
+
         wc_standings = statsapi.standings_data(leagueId='104', date=today_date)
 
         fourth_place_games_behind = 0
@@ -99,7 +108,7 @@ def get_win_loss_data():
         while (i <= 205):
             div_standings = wc_standings[i]['teams']
             for team in div_standings:
-                if team['wc_rank'] == '4':
+                if team['wc_rank'] == str(team_rank) and team_to_skip not in team['name']:
                     fourth_place_games_behind = team['wc_gb']
                     break
             i += 1
@@ -116,20 +125,30 @@ def get_win_loss_data():
         except:
             return False
 
+
     if is_float(gb): # if team not in 1st place
         if '+' in padres['wc_gb']:
-            first_out_of_wc_gb = get_fourth_place_games_behind() if is_float(get_fourth_place_games_behind()) else 0
+            first_out_of_wc_gb = get_contender_games_behind(4, 'Padres') if is_float(get_contender_games_behind(4, 'Padres')) else 0
             games_behind = f'+{float(padres["wc_gb"]) + float(first_out_of_wc_gb)}'
+        elif '-' in padres['wc_gb']: # if in last wc spot
+            if get_contender_games_behind(3, 'Padres'):
+                games_behind = '+0'
+            else:
+                games_behind = f'+{float(get_contender_games_behind(4, "Padres"))}'
         elif wc_gb < gb:
             games_behind = wc_gb
         else:
             games_behind = gb
     else:
-        second_place = division[1]
+        second_place = division[1] # select second place team in division
         if '+' in second_place['wc_gb']:
-            games_behind = float(second_place['gb']) + float(second_place['wc_gb'])
+            first_out_of_wc_gb = get_contender_games_behind(4, second_place['name']) if is_float(get_contender_games_behind(4, second_place['name'])) else 0
+            games_behind = f'+{float(second_place["gb"]) + float(second_place["wc_gb"]) + float(first_out_of_wc_gb)}'
+        elif '-' in second_place['wc_gb'] and not get_contender_games_behind(3, second_place['name']):
+            games_behind = f'+{float(second_place["gb"])} + {float(get_contender_games_behind(4, second_place["name"]))}'
         else:
-            games_behind = float(second_place['gb'])
+            games_behind = f'+{float(second_place["gb"])}'
+
 
     return {  
         'current_record': current_record,
