@@ -106,7 +106,7 @@ class ProcyonStack(Stack):
                                         )
 
         weekly_hitting_stats_lambda_rule = aws_events.Rule(self, 'weekly_hitting_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(00 15 ? 4-9 2 *)')) # 1100 EST Mon
+                                        schedule=aws_events.Schedule.expression('cron(30 14 ? 4-9 2 *)')) # 1030 EST Mon
 
         weekly_hitting_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_hitting_stats_lambda))
 
@@ -121,7 +121,7 @@ class ProcyonStack(Stack):
                                         )
 
         weekly_pitching_stats_lambda_rule = aws_events.Rule(self, 'weekly_pitching_stats_lambda_rule', 
-                                        schedule=aws_events.Schedule.expression('cron(15 20 ? 4-9 2 *)')) # 1120 EST Mon
+                                        schedule=aws_events.Schedule.expression('cron(00 15 ? 4-9 2 *)')) # 1100 EST Mon
 
         weekly_pitching_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(weekly_pitching_stats_lambda))
 
@@ -155,3 +155,22 @@ class ProcyonStack(Stack):
 
         monthly_pitching_stats_lambda_rule.add_target(aws_events_targets.LambdaFunction(monthly_pitching_stats_lambda))
 
+        # series results lambda
+        series_results_lambda = aws_lambda.Function(self, 'series_results_lambda',
+                                        runtime=aws_lambda.Runtime.PYTHON_3_8,
+                                        code=aws_lambda.Code.from_asset('lambdas/series_results_lambda'),
+                                        handler='lambda.handler',
+                                        role=twitter_lambda_role,
+                                        timeout=Duration.seconds(60),
+                                        layers=[lambda_layer]
+                                        )
+
+        series_results_lambda_rule_mon = aws_events.Rule(self, 'series_results_lambda_rule_mon', 
+                                        schedule=aws_events.Schedule.expression('cron(30 16 ? 4-9 2 *)')) # 1230 EST Mon
+
+        series_results_lambda_rule_fri = aws_events.Rule(self, 'series_results_lambda_rule_fri', 
+                                        schedule=aws_events.Schedule.expression('cron(00 15 ? 4-9 6 *)')) # 1100 EST Fri
+
+        series_results_lambda_rule_mon.add_target(aws_events_targets.LambdaFunction(series_results_lambda))
+
+        series_results_lambda_rule_fri.add_target(aws_events_targets.LambdaFunction(series_results_lambda))
