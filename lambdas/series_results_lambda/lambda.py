@@ -2,7 +2,6 @@ from requests_oauthlib import OAuth1Session
 import json
 import boto3
 import series_results
-import math
 
 
 SECRET_ID = 'twitter-api'
@@ -30,7 +29,7 @@ ACCESS_TOKEN = api_secrets['access-token']
 ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 
 
-def handler(event, context):
+def handler():
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `series_results.py` as the payload for a tweet
@@ -78,3 +77,6 @@ def handler(event, context):
     json_response = response.json()
 
     return json.dumps(json_response, indent=4, sort_keys=True)
+
+
+handler()

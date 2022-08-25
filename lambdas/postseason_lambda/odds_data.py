@@ -1,8 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
+import datetime 
 
 
-ODDS_URL = 'https://www.baseball-reference.com/leagues/majors/2022-playoff-odds.shtml'
+current_year = datetime.date.today().strftime('%Y')
+
+ODDS_URL = f'https://www.baseball-reference.com/leagues/majors/{current_year}-playoff-odds.shtml'
 
 
 def get_html(url):
