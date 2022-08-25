@@ -29,7 +29,7 @@ ACCESS_TOKEN = api_secrets['access-token']
 ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 
 
-def handler():
+def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `series_results.py` as the payload for a tweet
@@ -74,9 +74,4 @@ def handler():
 
     print('Response code: {}'.format(response.status_code))
 
-    json_response = response.json()
-
-    return json.dumps(json_response, indent=4, sort_keys=True)
-
-
-handler()
+    return json.dumps(response.json(), indent=4, sort_keys=True)

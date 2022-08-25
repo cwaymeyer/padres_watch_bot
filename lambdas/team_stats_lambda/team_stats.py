@@ -22,7 +22,7 @@ def get_statistic_and_rank(url):
     team_row = stats_table.find('a', attrs={'aria-label' : 'San Diego Padres'}).find_parent('tr')
 
     statistic = team_row.select_one('td[class*="selected"]').text
-    stat_rank = team_row.find('th')['data-row']
+    stat_rank = team_row.find('div', class_="index-3cdMSKi7").text
 
     return (statistic, stat_rank)
     

@@ -76,6 +76,4 @@ Team pitching: {team_pitching['era']} ERA / {team_pitching['whip']} WHIP
 
     print('Response code: {}'.format(response.status_code))
 
-    json_response = response.json()
-
-    return json.dumps(json_response, indent=4, sort_keys=True)
+    return json.dumps(response.json(), indent=4, sort_keys=True)
