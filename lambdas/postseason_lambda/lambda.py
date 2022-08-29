@@ -3,9 +3,12 @@ import json
 import boto3
 import record_data
 import odds_data
+import configparser
 
+config = configparser.RawConfigParser()
+config.read('config.properties')
 
-SECRET_ID = 'twitter-api'
+SECRET_ID = config.get('AWS', 'secret_id')
 TW_URL = 'https://api.twitter.com/2/tweets'
 
 
@@ -19,6 +22,7 @@ def get_api_secrets():
     secret = json.loads(response['SecretString'])
 
     return secret
+
 
 api_secrets = get_api_secrets()
 

@@ -1,4 +1,3 @@
-from webbrowser import get
 import statsapi
 import datetime
 
@@ -139,8 +138,8 @@ def get_win_loss_data():
             games_behind = wc_gb
         else:
             games_behind = gb
-    else:
-        second_place = division[1] # select second place team in division
+    else: # if team is in 1st place
+        second_place = division[1] # select 2nd place team in division
         if '+' in second_place['wc_gb']:
             first_out_of_wc_gb = get_contender_games_behind(4, second_place['name']) if is_float(get_contender_games_behind(4, second_place['name'])) else 0
             games_behind = f'+{float(second_place["gb"]) + float(second_place["wc_gb"]) + float(first_out_of_wc_gb)}'
