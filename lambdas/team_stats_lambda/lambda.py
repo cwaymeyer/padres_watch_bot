@@ -3,12 +3,9 @@ import json
 import boto3
 import team_stats
 import math
-import configparser
 
-config = configparser.RawConfigParser()
-config.read('config.properties')
 
-SECRET_ID = config.get('AWS', 'secret_id')
+SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
 
 
@@ -23,9 +20,9 @@ def get_api_secrets():
 
     return secret
 
+
 api_secrets = get_api_secrets()
 
-# api credentials
 CONSUMER_KEY = api_secrets['consumer-key']
 CONSUMER_SECRET = api_secrets['consumer-secret']
 ACCESS_TOKEN = api_secrets['access-token']
@@ -47,7 +44,7 @@ def handler(event, context):
     reliever_era = record_obj['reliever_era']
 
     def get_ranking_with_suffix(num):
-        suffixes = {1: 'st', 2: 'nd', 3: 'rd'}
+        suffixes = {1: 'st', 2: 'nd', 3: 'rd', 21: 'st', 22: 'nd', 23: 'rd' }
         rank_expr = {1: '🔥', 2: '🟢', 3: '🟡', 4: '🟠', 5: '🔴', 6: '🗑'}
 
         rank_expr_key = math.ceil(num / 5)

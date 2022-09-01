@@ -2,12 +2,9 @@ from requests_oauthlib import OAuth1Session
 import json
 import boto3
 import series_results
-import configparser
 
-config = configparser.RawConfigParser()
-config.read('config.properties')
 
-SECRET_ID = config.get('AWS', 'secret_id')
+SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
 
 
@@ -25,7 +22,6 @@ def get_api_secrets():
 
 api_secrets = get_api_secrets()
 
-# api credentials
 CONSUMER_KEY = api_secrets['consumer-key']
 CONSUMER_SECRET = api_secrets['consumer-secret']
 ACCESS_TOKEN = api_secrets['access-token']
