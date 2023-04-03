@@ -49,7 +49,7 @@ def handler(event, context):
 🔴 𝗟𝗼𝘀𝘀𝗲𝘀: {results['total_losses']}
 🔵 𝗦𝗽𝗹𝗶𝘁𝘀: {results['total_splits']}
 
-#TimeToShine
+#BringTheGold
     '''
 
     payload = {'text': tweet_text}
@@ -74,3 +74,5 @@ def handler(event, context):
     print('Response code: {}'.format(response.status_code))
 
     return json.dumps(response.json(), indent=4, sort_keys=True)
+
+handler(None, None)

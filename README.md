@@ -47,4 +47,6 @@ To set up Lambda dependencies in a Lambda Layer:
 
 - Copy `requirements-layer.txt` to a new local virtualenv
 - Install the dependencies with `$ pip install -r requirements-layer.txt`
-- Copy the packages to `layer/python` with `$ rsync -a .venv/lib/<python-version>/site-packages <path/to/procyon>/layers/python`
+- In the root directory, run `mkdir -p layers/python`
+- Copy the packages to `layers/python` with `$ rsync -a .venv/lib/python3.8/site-packages layers/python`
+- You can now delete the virtual environment created in step one

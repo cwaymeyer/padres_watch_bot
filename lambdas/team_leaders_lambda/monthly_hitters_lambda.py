@@ -52,7 +52,7 @@ def handler(event, context):
 
 Team hitting: {team_hitting['avg']} / {team_hitting['obp']} / {team_hitting['slg']}
 
-#GoPadres #TimeToShine
+#BringTheGold
     '''
 
     payload = {'text': tweet_text}
