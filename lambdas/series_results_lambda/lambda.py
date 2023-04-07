@@ -32,7 +32,6 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `series_results.py` as the payload for a tweet
-    Account: @padres_watch
     '''
 
     results = series_results.get_series_results()

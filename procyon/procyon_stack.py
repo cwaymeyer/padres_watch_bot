@@ -40,7 +40,7 @@ lambdas = [
         'name': 'postseason_lambda',
         'folder': 'lambdas/postseason_lambda',
         'file': 'lambda',
-        'cron': ['00 15 ? 4-9 4 *', '30 16 ? 4-9 7 *'] # 1100 EST Wed, 1230 EST Sat
+        'cron': ['30 16 ? 4-9 7 *'] # 1230 EST Sat
     },
     {
         'name': 'team_stats_lambda',
@@ -59,6 +59,12 @@ lambdas = [
         'folder': 'lambdas/team_leaders_lambda',
         'file': 'monthly_pitchers_lambda',
         'cron': ['30 19 1 5-10 ? *'] # 1530 EST 1st of month
+    },
+    {
+        'name': 'war_rankings_lambda',
+        'folder': 'lambdas/war_lambda',
+        'file': 'lambda',
+        'cron': ['00 15 ? 4-9 4 *'] # 1100 EST Wed
     }
 ]
 
@@ -111,11 +117,12 @@ class ProcyonStack(Stack):
         # create Lambdas and Eventbridge cron expressions
         for lamb in lambdas:
             curr_lambda = aws_lambda.Function(self, lamb['name'],
+                                        function_name=lamb['name'],
                                         runtime=aws_lambda.Runtime.PYTHON_3_8, 
                                         code=aws_lambda.Code.from_asset(lamb['folder']),
                                         handler=f'{lamb["file"]}.handler',
                                         role=twitter_lambda_role,
-                                        timeout=Duration.seconds(60),
+                                        timeout=Duration.seconds(30),
                                         layers=[lambda_layer]
                                         )
             

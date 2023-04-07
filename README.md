@@ -9,7 +9,7 @@
 | Mon 1030 EST          | Last week's hitting leaders   |
 | Mon 1100 EST          | Last week's pitching leaders  |
 | Tue 1100 EST          | Season series results         |
-| Wed 1100 EST          | Postseason update             |
+| Wed 1100 EST          | Season WAR leaders            |
 | Thu 1100 EST          | Season team stats             |
 | Fri 1230 EST          | Season series results         |
 | Sat 1230 EST          | Postseason update             |

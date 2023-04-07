@@ -1,7 +1,7 @@
 from requests_oauthlib import OAuth1Session
 import json
 import boto3
-import leaders
+import war_data
 
 
 SECRET_ID = 'twitter-api'
@@ -31,25 +31,23 @@ ACCESS_TOKEN_SECRET = api_secrets['access-token-secret']
 def handler(event, context):
     '''
     🪐 Lambda handler 🪐
-    This lambda takes data acquired in `leaders.py` as the payload for a tweet
+    This lambda takes data acquired in `war_data.py`, as the payload for a tweet
     '''
 
-    last_month = leaders.get_last_month()
-    team_hitting = leaders.get_month_team_hitting_stats()
-    hitters = leaders.month_hitting_leaders
-    p1 = hitters[0]
-    p2 = hitters[1]
-    p3 = hitters[2]
+    players = war_data.get_war_data() # { 'player', 'war', 'value' }
 
+    players.sort(key=lambda player: player['value'], reverse=True)
+    print(players)
+
+    leaders_list = ''
+
+    for i in range(10):
+        leaders_list += f'{players[i]["player"]} - {players[i]["war"]}\n'
 
     tweet_text = f'''
-    #𝙋𝙖𝙙𝙧𝙚𝙨 𝙢𝙤𝙣𝙩𝙝𝙡𝙮 𝙝𝙞𝙩𝙩𝙞𝙣𝙜 𝙡𝙚𝙖𝙙𝙚𝙧𝙨 | {last_month}
+#𝙋𝙖𝙙𝙧𝙚𝙨 𝙨𝙚𝙖𝙨𝙤𝙣 𝙒𝘼𝙍 𝙡𝙚𝙖𝙙𝙚𝙧𝙨
 
-{p1['name']}: {p1['avg']} AVG, {p1['homeruns']} HR, {p1['rbis']} RBI, {p1['ops']} OPS
-{p2['name']}: {p2['avg']} AVG, {p2['homeruns']} HR, {p2['rbis']} RBI, {p2['ops']} OPS
-{p3['name']}: {p3['avg']} AVG, {p3['homeruns']} HR, {p3['rbis']} RBI, {p3['ops']} OPS
-
-Team hitting: {team_hitting['avg']} / {team_hitting['obp']} / {team_hitting['slg']}
+{leaders_list}
 
 #BringTheGold
     '''

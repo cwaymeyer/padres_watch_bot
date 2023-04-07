@@ -33,7 +33,6 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `team_stats.py` as the payload for a tweet
-    Account: @padres_watch
     '''
 
     record_obj = team_stats.get_stats() # { 'ops', 'runs', 'starter_era', 'reliever_era' }

@@ -32,7 +32,6 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `leaders.py` as the payload for a tweet
-    Account: @padres_watch
     '''
 
     date_range = leaders.get_date_range()

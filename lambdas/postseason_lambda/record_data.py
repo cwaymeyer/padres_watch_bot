@@ -45,6 +45,9 @@ def get_win_loss_data():
         '''Get Padres record on a specified date this year'''
 
         standings = statsapi.standings_data(leagueId='104', date=date)
+        if not standings:
+            raise Exception("No standings data found for specified date")
+        
         nl_west = standings[203]['teams']
         padres = [ team for team in nl_west if team['name'] == 'San Diego Padres']
 

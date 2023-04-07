@@ -33,7 +33,6 @@ def handler(event, context):
     '''
     🪐 Lambda handler 🪐
     This lambda takes data acquired in `record_data.py` and `odds_data.py`, as the payload for a tweet
-    Account: @padres_watch
     '''
 
     record_obj = record_data.get_win_loss_data() # { 'current_record', 'wins_pace', 'week_record', 'games_behind' }
