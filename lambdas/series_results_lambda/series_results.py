@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import datetime 
+import datetime
 
 
 current_year = datetime.date.today().strftime('%Y')

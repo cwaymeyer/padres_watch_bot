@@ -3,10 +3,11 @@ import json
 import boto3
 import team_stats
 import math
+import os
 
 
-SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
+SECRET_ID = os.environ['TW_SECRET_ID']
 
 
 def get_api_secrets():

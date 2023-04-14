@@ -2,10 +2,11 @@ from requests_oauthlib import OAuth1Session
 import json
 import boto3
 import series_results
+import os
 
 
-SECRET_ID = 'twitter-api'
 TW_URL = 'https://api.twitter.com/2/tweets'
+SECRET_ID = os.environ['TW_SECRET_ID']
 
 
 def get_api_secrets():

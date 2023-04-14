@@ -123,7 +123,10 @@ class ProcyonStack(Stack):
                                         handler=f'{lamb["file"]}.handler',
                                         role=twitter_lambda_role,
                                         timeout=Duration.seconds(30),
-                                        layers=[lambda_layer]
+                                        layers=[lambda_layer],
+                                        environment={
+                                            'TW_SECRET_ID': config.get('AWS', 'twitter_secret_id'),
+                                        }
                                         )
             
             for index, expression in enumerate(lamb['cron']):
