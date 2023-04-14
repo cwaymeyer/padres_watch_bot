@@ -99,7 +99,7 @@ class ProcyonStack(Stack):
                                                             'secretsmanager:ListSecretVersionIds'
                                                         ],
                                                         resources=[
-                                                            'arn:aws:secretsmanager:{}:{}:secret:twitter-api*'.format(AWS_REGION, AWS_ACCOUNT_ID)
+                                                            'arn:aws:secretsmanager:{}:{}:secret:*'.format(AWS_REGION, AWS_ACCOUNT_ID)
                                                         ]
                                                     )
                                                 ]
