@@ -34,7 +34,7 @@ lambdas = [
         'name': 'series_results_lambda',
         'folder': 'lambdas/series_results_lambda',
         'file': 'lambda',
-        'cron': ['00 15 ? 4-9 3 *', '30 16 ? 4-9 6 *'] # 11 EST Tue, 1230 EST Fri
+        'cron': ['00 15 ? 4-9 3 *', '00 16 ? 4-9 6 *'] # 1100 EST Tue, 1200 EST Fri
     },
     {
         'name': 'postseason_lambda',
@@ -46,7 +46,7 @@ lambdas = [
         'name': 'team_stats_lambda',
         'folder': 'lambdas/team_stats_lambda',
         'file': 'lambda',
-        'cron': ['00 15 ? 4-9 5 *'] # 1100 EST Thu
+        'cron': ['30 14 ? 4-9 5 *'] # 1100 EST Thu
     },
     {
         'name': 'monthly_hitting_stats_lambda',
@@ -65,6 +65,12 @@ lambdas = [
         'folder': 'lambdas/war_lambda',
         'file': 'lambda',
         'cron': ['00 15 ? 4-9 4 *'] # 1100 EST Wed
+    },
+    {
+        'name': 'win_loss_lambda',
+        'folder': 'lambdas/win_loss_lambda',
+        'file': 'lambda',
+        'cron': ['00 17 ? 4-9 1 *', '00 16 ? 4-9 5 *'] # 1300 EST Sun, 1200 EST Thu
     }
 ]
 

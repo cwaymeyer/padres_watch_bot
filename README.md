@@ -6,12 +6,14 @@
 
 | Day                   |                               |
 | --------------------- | ----------------------------- |
+| Sun 1300 EST          | W/L update                    |
 | Mon 1030 EST          | Last week's hitting leaders   |
 | Mon 1100 EST          | Last week's pitching leaders  |
 | Tue 1100 EST          | Season series results         |
 | Wed 1100 EST          | Season WAR leaders            |
-| Thu 1100 EST          | Season team stats             |
-| Fri 1230 EST          | Season series results         |
+| Thu 1030 EST          | Season team stats             |
+| Thu 1200 EST          | W/L update                    |
+| Fri 1200 EST          | Season series results         |
 | Sat 1230 EST          | Postseason update             |
 | 1st of month 1500 EST | Last month's hitting leaders  |
 | 1st of month 1530 EST | Last month's pitching leaders |
