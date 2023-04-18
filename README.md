@@ -14,7 +14,7 @@
 | Thu 1030 EST          | Season team stats             |
 | Thu 1200 EST          | W/L update                    |
 | Fri 1200 EST          | Season series results         |
-| Sat 1230 EST          | Postseason update             |
+| Sat 1300 EST          | Postseason update             |
 | 1st of month 1500 EST | Last month's hitting leaders  |
 | 1st of month 1530 EST | Last month's pitching leaders |
 

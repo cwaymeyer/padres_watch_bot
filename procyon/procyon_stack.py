@@ -40,7 +40,7 @@ lambdas = [
         'name': 'postseason_lambda',
         'folder': 'lambdas/postseason_lambda',
         'file': 'lambda',
-        'cron': ['30 16 ? 4-9 7 *'] # 1230 EST Sat
+        'cron': ['00 17 ? 4-9 7 *'] # 1300 EST Sat
     },
     {
         'name': 'team_stats_lambda',
