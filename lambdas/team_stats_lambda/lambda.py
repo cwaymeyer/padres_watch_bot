@@ -51,7 +51,7 @@ def handler(event, context):
         rank_emoji = rank_expr[rank_expr_key]
 
         if num in suffixes:
-            return f'({num}{suffixes["num"]}) {rank_emoji}'
+            return f'({num}{suffixes[num]}) {rank_emoji}'
         else:
             return f'({num}th) {rank_emoji}'
 

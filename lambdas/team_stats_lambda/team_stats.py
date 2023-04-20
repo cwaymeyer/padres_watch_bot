@@ -46,3 +46,5 @@ def get_stats():
         'starter_era': team_starter_era, 
         'reliever_era': team_reliever_era
     }
+
+print(get_stats())
