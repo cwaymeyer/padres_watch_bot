@@ -49,7 +49,7 @@ def handler(event, context):
 
 {results}
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}

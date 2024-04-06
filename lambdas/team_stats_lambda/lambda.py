@@ -69,7 +69,7 @@ def handler(event, context):
 𝗥𝗼𝘁𝗮𝘁𝗶𝗼𝗻 𝗘𝗥𝗔:      {starter_era[0]}  {starter_era_rank}
 𝗕𝘂𝗹𝗹𝗽𝗲𝗻 𝗘𝗥𝗔:       {reliever_era[0]}  {reliever_era_rank}
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}

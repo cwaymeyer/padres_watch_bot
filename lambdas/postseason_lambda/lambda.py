@@ -58,7 +58,7 @@ def handler(event, context):
 𝗟𝗮𝘀𝘁 𝟳𝗱:        {last_7}
 𝗖𝗵𝗮𝗻𝗴𝗲:      {change}
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}

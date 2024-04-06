@@ -52,7 +52,7 @@ def handler(event, context):
 
 Team pitching: {team_pitching['era']} ERA / {team_pitching['whip']} WHIP
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}

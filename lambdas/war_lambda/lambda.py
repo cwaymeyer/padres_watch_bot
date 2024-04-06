@@ -50,7 +50,7 @@ def handler(event, context):
 
 {leaders_list}
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}

@@ -49,7 +49,7 @@ def handler(event, context):
 🔴 𝗟𝗼𝘀𝘀𝗲𝘀: {results['total_losses']}
 🔵 𝗦𝗽𝗹𝗶𝘁𝘀: {results['total_splits']}
 
-#BringTheGold
+#LetsGoPadres
     '''
 
     payload = {'text': tweet_text}
